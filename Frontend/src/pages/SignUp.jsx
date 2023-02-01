@@ -29,11 +29,6 @@ import {
     let { loading, error, isAuth, isregister } = useSelector(
       (state) => state
     );
-    let obj = {
-      isAuth: isAuth,
-      isregister: isregister,
-    };
-    console.log(obj)
     let dispatch = useDispatch();
     const handleClick = () => setShow(!show);
     useEffect(() => {

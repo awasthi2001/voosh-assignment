@@ -22,12 +22,10 @@ import {
   import { useEffect } from "react";
   export const Login = () => {
     const [show, setShow] = React.useState(false);
-    const toast = useToast();
     let navigate = useNavigate();
     const [password, setPassword] = useState("");
     const [phone_number, setphone_number] = useState("");
     let { loading, error, isAuth } = useSelector((state) => state);
-    console.log(isAuth)
     let dispatch = useDispatch();
     const handleClick = () => setShow(!show);
     useEffect(() => {
