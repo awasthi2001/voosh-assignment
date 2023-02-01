@@ -42,11 +42,11 @@ export async function Login_handler(req, res) {
             token: token,
           });
         } else {
-          res.send("wrong credentials");
+          res.status(400).send("wrong credentials");
         }
       });
     } else {
-      res.send("wrong credentials");
+      res.status(400).send("wrong credentials");
     }
   } catch (error) {
     res.status(500).send({
