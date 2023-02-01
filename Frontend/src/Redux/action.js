@@ -50,8 +50,8 @@ import {
           }
         }
       );
-      let res2 = await res.json();
-      if (res2== "registered") {
+
+      if (res.status==201) {
         dispatch(setisRegister(true));
       } else {
         dispatch(seterror());
@@ -65,6 +65,7 @@ import {
   };
   
   export const handleLogin = (data) => async (dispatch) => {
+
     try {
       dispatch(setloading(true));
       let res = await fetch(
@@ -76,12 +77,14 @@ import {
           }
         }
       );
-      localStorage.setItem("Usertoken", res.data.token);
-      localStorage.setItem("user_id", res.data.user_id);
-      if (res.data.token) {
-        dispatch(settoken(res.data.token));
+      let res2 = await res.json()
+      localStorage.setItem("Usertoken", res2.token);
+      localStorage.setItem("user_id", res2.user_id);
+      localStorage.setItem("phone_number", res2.phone_number);
+      if (res.status==200) {
         dispatch(setisAuth(true));
-      } else if (res.data.message == "wrong credentials!") {
+        dispatch(settoken(res2.data.token));  
+      } else if (res.data.message == "wrong credentials") {
         dispatch(seterror());
         dispatch(setisAuth(false));
       }
