@@ -27,6 +27,7 @@ export const AddOrder = () => {
     let obj = {
         sub_total : subtotal
     }
+    //it will take user_id and phone_number from the backend automatically
       try {
       let res =   await fetch("https://tame-blue-quail-coat.cyclic.app/order/add-order",{
             method : 'POST',
