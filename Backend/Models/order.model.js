@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const UserSchema = mongoose.Schema(
+const Order_Schema = mongoose.Schema(
     {
-        Name: {type: String, required: true},
-        phone_number: {type: Number, required: true},
-        password: {type: String, required: true, select: false}
+        user_id: {type: String, required: true},
+        sub_total: {type: Number, required: true},
+        phone_number: {type: String, required: true, select: false}
     },
     {
         versionKey: false,
@@ -12,4 +12,4 @@ const UserSchema = mongoose.Schema(
     }
 )
 
-export const UserModel = mongoose.model("user",UserSchema)
+export const OrderModel = mongoose.model("order",Order_Schema)
