@@ -4,8 +4,8 @@ import {
     SETISREGISTER,
     SETLOADING,
     SETTOKEN,
-  } from "./AuthRedux/actionTypes";
-  import axios from "axios";
+  } from "./actionTypes";
+
   
   export const settoken = (payload) => {
     return {
@@ -41,12 +41,17 @@ import {
   export const handleRegister = (data) => async (dispatch) => {
     try {
       dispatch(setloading(true));
-      let res = await axios.post(
-        "https://mauve-seal-tie.cyclic.app/auth/register",
-        data
+      let res = await fetch(
+        "https://tame-blue-quail-coat.cyclic.app/user/add-user",{
+          method : 'POST',
+          body : JSON.stringify(data),
+          headers : {
+            'Content-Type': 'application/json'
+          }
+        }
       );
-      //    console.log(res.data.token)
-      if (res.data.message == "Successfully created") {
+      let res2 = await res.json();
+      if (res2== "registered") {
         dispatch(setisRegister(true));
       } else {
         dispatch(seterror());
@@ -62,12 +67,17 @@ import {
   export const handleLogin = (data) => async (dispatch) => {
     try {
       dispatch(setloading(true));
-      let res = await axios.post(
-        "https://mauve-seal-tie.cyclic.app/auth/login",
-        data
+      let res = await fetch(
+        "https://tame-blue-quail-coat.cyclic.app/user/login-user",{
+          method : 'POST',
+          body : JSON.stringify(data),
+          headers : {
+            'Content-Type': 'application/json'
+          }
+        }
       );
       localStorage.setItem("Usertoken", res.data.token);
-      localStorage.setItem("User_Id", res.data.User_Id);
+      localStorage.setItem("user_id", res.data.user_id);
       if (res.data.token) {
         dispatch(settoken(res.data.token));
         dispatch(setisAuth(true));
