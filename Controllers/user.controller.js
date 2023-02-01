@@ -14,7 +14,7 @@ export async function Register_handler(req, res) {
       bcrypt.hash(password, 8, async (err, hash) => {
         password = hash;
         await UserModel.create({ Name, phone_number, password });
-        res.send("registered");
+        res.status(201).send("registered");
       });
     }
   } catch (error) {
