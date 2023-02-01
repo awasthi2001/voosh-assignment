@@ -10,7 +10,7 @@ import {
   export const settoken = (payload) => {
     return {
       type: SETTOKEN,
-      payload: payload,
+      payload: payload, 
     };
   };
   

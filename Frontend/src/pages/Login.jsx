@@ -91,7 +91,7 @@ import {
               <Button h="1.75rem" size="sm" onClick={handleClick}>
                 {show ? "Hide" : "Show"}
               </Button>
-            </InputRightElement>
+            </InputRightElement> 
           </InputGroup>
         </FormControl>
         <Button
