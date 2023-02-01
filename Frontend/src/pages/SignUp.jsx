@@ -23,7 +23,7 @@ import {
     const [show, setShow] = React.useState(false);
     const toast = useToast();
     const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
+    const [phone_number, setphone_number] = useState("");
     const [name, setName] = useState("");
     let navigate = useNavigate();
     let { loading, error, isAuth, isregister } = useSelector(
@@ -33,39 +33,18 @@ import {
       isAuth: isAuth,
       isregister: isregister,
     };
-    console.log(obj);
+    console.log(obj)
     let dispatch = useDispatch();
     const handleClick = () => setShow(!show);
     useEffect(() => {
       if(isregister){
-        if (isregister) {
-          toast({
-            title: "Successfully Registered",
-            description: "",
-            position: 'top',
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          });
           return navigate("/login");
-        }
       }
       if (isAuth) {
         return navigate("/");
       }
   
     },[isregister,isAuth]);
-    function handleToast() {
-      if (error) {
-        return toast({
-          title: "Error",
-          description: "Something went wrong! please try again later",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    }
     return (
       <Box
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
@@ -83,11 +62,11 @@ import {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <FormLabel>Email address</FormLabel>
+          <FormLabel>Phone Number</FormLabel>
           <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="number"
+            value={phone_number}
+            onChange={(e) => setphone_number(e.target.value)}
           />
           <FormLabel>Password</FormLabel>
           <InputGroup size="md">
@@ -112,12 +91,11 @@ import {
           colorScheme="teal"
           onClick={() => {
             let obj = {
-              Full_Name: name,
-              Email_Id: email,
-              Password: password,
+              Name: name,
+              phone_number: phone_number,
+              password: password,
             };
             dispatch(handleRegister(obj));
-            handleToast();
           }}
         >
           Register

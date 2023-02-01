@@ -27,18 +27,11 @@ import {
     const [password, setPassword] = useState("");
     const [phone_number, setphone_number] = useState("");
     let { loading, error, isAuth } = useSelector((state) => state);
+    console.log(isAuth)
     let dispatch = useDispatch();
     const handleClick = () => setShow(!show);
     useEffect(() => {
       if (isAuth) {
-        toast({
-          title: "Successfully Logged in",
-          description: "",
-          position : "top",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
         return navigate("/");
       }
     },[isAuth]);
@@ -49,16 +42,6 @@ import {
         password: password,
       };
       dispatch(handleLogin(obj));
-         if(error){
-        toast({
-          title: "Error",
-          description: "Something went wrong! please try again later",
-          status: "error",
-          duration: 9000,
-          isClosable: true, 
-        });
-      }
-  
     };
     return (
       <Box
