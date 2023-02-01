@@ -4,7 +4,7 @@ const Order_Schema = mongoose.Schema(
     {
         user_id: {type: String, required: true},
         sub_total: {type: Number, required: true},
-        phone_number: {type: String, required: true, select: false}
+        phone_number: {type:Number  ,required: true}
     },
     {
         versionKey: false,
