@@ -85,12 +85,17 @@ import {
           mt="2"
           colorScheme="teal"
           onClick={() => {
-            let obj = {
-              Name: name,
-              phone_number: phone_number,
-              password: password,
-            };
-            dispatch(handleRegister(obj));
+            if(phone_number.length==10){
+              let obj = {
+                Name: name,
+                phone_number: phone_number,
+                password: password,
+              };
+              dispatch(handleRegister(obj));
+            }else{
+              alert("please enter a valid phone number")
+            }
+
           }}
         >
           Register

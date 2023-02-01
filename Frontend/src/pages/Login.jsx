@@ -35,11 +35,16 @@ import {
     },[isAuth]);
   
     const handleLoginClick = () => {
-      let obj = {
-        phone_number: phone_number,
-        password: password,
-      };
-      dispatch(handleLogin(obj));
+      if(phone_number.length==10){
+        let obj = {
+          phone_number: phone_number,
+          password: password,
+        };
+        dispatch(handleLogin(obj));
+      }else{
+        alert("please enter a valid phone number");
+      }
+
     };
     return (
       <Box
