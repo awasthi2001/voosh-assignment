@@ -9,6 +9,10 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cors());
 
+app.get('/',(req,res)=>{
+  console.log("Welcome to Home")
+})
+
 app.use("/user", userRouter);
 app.use(authenticate);
 app.use("/order", OrderRouter);

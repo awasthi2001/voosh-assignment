@@ -1,9 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Login } from "../Pages/Login.jsx";
-import { SignUp } from "../Pages/SignUp.jsx";
+import { AddOrder } from "../pages/AddOrder.jsx";
+import { Login } from "../pages/Login.jsx";
+import { Orders } from "../pages/Orders.jsx";
+import { SignUp } from "../pages/SignUp.jsx";
 import PrivateRoute from "./PrivateRoute";
-import { Todo } from "./Todo";
+
 const AllRoutes = () => {
   return (
     <div>
@@ -12,7 +14,15 @@ const AllRoutes = () => {
           path="/"
           element={
             <PrivateRoute>
-              <Todo />
+              <Orders />
+            </PrivateRoute>
+          }
+        ></Route>
+         <Route
+          path="/Add_order"
+          element={
+            <PrivateRoute>
+              <AddOrder />
             </PrivateRoute>
           }
         ></Route>
